@@ -36,8 +36,8 @@ ip = urllib.urlopen(service).read().strip()
 f = open(ipfile, 'r+')
 c_ip = f.read().strip()
 
-# If all's good, carry on
 if ip == c_ip:
+    # If all's good, carry on
     logging.info('All Gravy: %s = %s' % (ip, c_ip))
 else:
     try:
