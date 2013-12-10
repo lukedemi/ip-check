@@ -34,11 +34,11 @@ ip = urllib.urlopen(service).read().strip()
 
 # Sets the current IP to be the IP one delivered by the IP service
 f = open(ipfile, 'r+')
-c_ip = f.read().strip()
+current_ip = f.read().strip()
 
-if ip == c_ip:
+if ip == current_ip:
     # If all's good, carry on
-    logging.info('All Gravy: %s = %s' % (ip, c_ip))
+    logging.info('All Gravy: %s = %s' % (ip, current_ip))
 else:
     try:
         socket.inet_aton(ip)
@@ -47,7 +47,7 @@ else:
         logging.error("Response '%s' recieved from service '%s' does not seem to be valid. Exiting." \
                      % (ip, service))
         exit(1) 
-    logging.info("NO MATCH: %s != %s. File /var/spool/ipaddr changed to %s" % (ip, c_ip, c_ip))
+    logging.info("NO MATCH: %s != %s. File /var/spool/ipaddr changed to %s" % (ip, current_ip, current_ip))
     output = urllib.urlopen(apiurl).read()
     logging.info(output)
     f.seek(0)
