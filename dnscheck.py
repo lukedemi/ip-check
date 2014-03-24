@@ -18,6 +18,7 @@ def fileExists(filename):
         print '%s does not exist. Touch it.' % (filename)
         exit(1)
 
+# Ensure required files exist
 fileExists(logfile)
 fileExists(ipfile)
 fileExists(apifile)
